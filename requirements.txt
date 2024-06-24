@@ -1,0 +1,6 @@
+secrets
+flask
+pandas
+numpy
+tabula
+io

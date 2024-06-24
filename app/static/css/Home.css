@@ -1,0 +1,82 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.main-box {
+    max-width: 600px;
+    height: auto;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+p {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.convert-box {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 15%;
+}
+
+.convert-icon {
+    margin-right: 20px;
+    height: 100px; /* Ustaw wysokość obrazka */
+    width: auto; /* Dostosuj szerokość proporcjonalnie */
+}
+
+.convert-form {
+    display: flex;
+    align-items: center;
+
+}
+
+.inputfile {
+    display: none;
+}
+
+label {
+    background-color: #007bff;
+    color: #fff;
+    margin-right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+label:hover {
+    background-color: #0056b3;
+}
+
+.submit-btn {
+    
+    padding: 11px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+    padding: 12px 20px; /* Dodatkowy padding na hover */
+}

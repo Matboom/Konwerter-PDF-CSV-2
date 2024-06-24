@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF to CSV Converter</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <div class="main-box">
+        <h1>Konwerter PDF do CSV</h1>
+        <!-- <p>(tabela numer 1)</p> -->
+        <div class="convert-box">
+            <img src="{{ url_for('static', filename='img/convert.png') }}" alt="Convert Icon" class="convert-icon">
+            <form id="upload-form" action="/" method="post" enctype="multipart/form-data" class="convert-form">
+                <label for="file">Wybierz plik PDF</label>
+                <input type="file" id="file" name="file" class="inputfile">
+                <input type="submit" value="Konwertuj" class="submit-btn">
+            </form>
+        </div>
+        <div id="conversion-message">
+            
+        </div>
+    </div>
+
+</body>
+</html>

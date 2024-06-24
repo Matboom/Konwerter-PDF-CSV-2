@@ -1,0 +1,20 @@
+Konwerter-PDF-CSV/
+├── app/
+│   ├── __init__.py
+│   ├── routes.py
+│   ├── config.py
+│   ├── converters/
+│   │   ├── Table_1.py
+│   │   └── ...
+│   ├── templates/
+│   │   ├── home.html
+│   │   └── ...
+│   └── static/
+│       ├── css/
+│       │   └── home.css
+│       ├── img/
+│       │   └── convert.png
+│       └── ...
+├── requirements.txt
+├── app.yaml
+└── run.py
