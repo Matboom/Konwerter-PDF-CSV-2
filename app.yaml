@@ -1,0 +1,29 @@
+runtime: python312
+
+handlers:
+# Obsługuje żądania skierowane do /static, wskazując na katalog app/static
+- url: /static
+  static_dir: app/static
+
+# Obsługuje żądania skierowane do /images, wskazując na katalog app/static/img
+- url: /images
+  static_dir: app/static/img
+
+# Domyślny handler dla wszystkich innych URL-ów
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
+
+# Komenda do uruchomienia aplikacji
+entrypoint: gunicorn -b :$PORT run:app
+
+
+# Konfiguracje do zmniejszenia kosztów podczas testowania
+# https://cloud.google.com/appengine/docs/flexible/python/configuring-your-app-with-app-yaml
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
