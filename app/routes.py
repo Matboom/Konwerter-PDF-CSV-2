@@ -40,4 +40,4 @@ def home():
                 return jsonify({'message': str(e), 'success': False}), 500
     
     # Jeśli metoda to GET, renderuj standardowy szablon HTML
-    return render_template('home.html', secret_key=SECRET_KEY)
+    return render_template('Home.html', secret_key=SECRET_KEY)
