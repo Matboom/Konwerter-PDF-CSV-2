@@ -2,6 +2,9 @@ import tabula
 import pandas as pd
 import numpy as np
 
+import os
+os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-17-openjdk-amd64'
+
 def convert_pdf_to_csv_1(pdf_path, csv_buffer):
     # Define the area of the table (top-left x, top-left y, bottom-right x, bottom-right y)
     area = [70.284, 71.697, 761.228, 558.11]
@@ -195,66 +198,3 @@ def convert_pdf_to_csv_1(pdf_path, csv_buffer):
 
     # Print CSV buffer content for debugging
     csv_content = csv_buffer.getvalue()
-
-# Przesuwanie wartości w kolumnach ['j.m. ', 'Poszcz', 'Razem'] o jeden wiersz do góry
-# cols_to_shift = ['j.m.', 'Poszcz', 'Razem']
-# df[cols_to_shift] = df[cols_to_shift].shift(-1)
-
-# Porzucenie kolumny "Condition_1"
-# df = df.drop(axis=1, columns=['Condition_1'])
-
-# Przeniesienie wartości '0349-02' do nowej kolumny 'Dział'
-# df['Podstawa_2'] = df.apply(lambda row: row['Podstawa'] if row['Condition_1'] else np.nan, axis=1)
-
-# Przesunięcie wartości '0349-02' w kolumnie 'Podstawa_2' o jeden wiersz do góry
-# df['Podstawa_2'] = df['Podstawa_2'].shift(-1, fill_value=np.nan)
-
-# Dodawanie zawartości kolumn 'Podstawa' i 'Podstawa_2'
-# df['Podstawa'] = df['Podstawa'].astype(str) + ' ' + df['Podstawa_2'].astype(str)
-
-# df['Poszcz'] = pd.to_numeric(df['Poszcz'], errors='coerce')
-
-# # Przeniesienie wartości 'd.' do nowej kolumny 'Dział'
-# df['Dział'] = df['Lp.'].apply(lambda x: x if isinstance(x, str) and x.startswith('d.') else np.nan)
-
-# # Przesunięcie wartości 'd.' w kolumnie 'Dział' o jeden wiersz do góry
-# df['Dział'] = df['Dział'].shift(-1, fill_value=np.nan)
-
-# # Ustawienie wartości 'd.' w kolumnie 'Lp.' na NaN
-# df['Lp.'] = df['Lp.'].apply(lambda x: np.nan if isinstance(x, str) and x.startswith('d.') else x)
-
-# # Nowa kolejność kolumn
-# new_order = ['Lp.', 'Dział', 'Podstawa', 'Opis i wyliczenia', 'j.m.', 'Poszcz', 'Razem']
-
-# # Reindeksowanie ramki danych z nową kolejnością kolumn
-# df = df.reindex(columns=new_order)
-
-# df['Lp.'] = df['Lp.'].ffill()
-# df['Lp.'] = df['Lp.'].astype(str).astype(int)
-# df['Dział'] = df['Dział'].ffill()
-
-# df['Podstawa'] = df['Podstawa'].ffill()
-
-# Usunięcie wierszy, w których kolumny "Opis i wyliczenia j.m.", "Poszcz" i "Razem" są puste
-# df = df.dropna(subset=['Opis i wyliczenia','j.m.', 'Poszcz', 'Razem'], how='all')
-
-# Połączenie wszystkich wartości w kolumnie "Podstawa" w jednym wierszu dla unikalnych wartości w kolumnie "Lp."
-# df['Podstawa'] = df.groupby('Lp.')['Podstawa'].transform(lambda x: ' '.join(x.dropna().unique()))
-# Grupowanie i przekształcenie kolumny 'Podstawa'
-# df['Podstawa'] = df.groupby('Lp.')['Podstawa'].transform(lambda x: ' '.join(x.dropna().unique()))
-
-# Utwórz kolumnę "Condition_1" i "Condition_2" z wartościami False
-# df['Condition_1'] = False
-# df['Condition_2'] = False
-
-# # Warunek sprawdzający i ustawianie wartości True dla Condition_1
-# condition_1 = ~df['Lp.'].isnull() & ~df['Dział'].notnull() & ~df['Podstawa'].notnull() & ~df['j.m.'].notnull() & ~df['Poszcz'].notnull() & ~df['Razem'].notnull()
-# df.loc[condition_1, 'Condition_1'] = True
-# df = df[df['Condition_1'] == False]
-
-# # Poprawka w Condition_2 zgodnie z wymaganiami
-# condition_2_correction = df['Lp.'].isnull() & df['Dział'].isnull() & ~df['Podstawa'].isnull()
-# df.loc[condition_2_correction, 'Condition_2'] = True
-
-# Znajdź indeksy wierszy, gdzie Condition_1 = True i Condition_2 = True
-# condition_to_merge = (df['Condition_1'] == True) & (df['Condition_2'].shift(+1) == True)
