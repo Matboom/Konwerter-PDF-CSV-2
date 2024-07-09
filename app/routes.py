@@ -41,3 +41,11 @@ def home():
     
     # Jeśli metoda to GET, renderuj standardowy szablon HTML
     return render_template('Home.html', secret_key=SECRET_KEY)
+
+import os
+print('Tutaj będzie informacja o JAVA')
+os.system("java -version")
+
+print('Tutaj będzie informacja ścieżce do JAVA_HOME')
+java_home = os.getenv('JAVA_HOME')
+print(f'JAVA_HOME: {java_home}')
